@@ -1,11 +1,15 @@
 import Head from "next/head";
-
+import { useState } from "react";
 export default function Home() {
+  const [menuButton, setMenuButton] = useState(false);
   return (
     <>
+      <Head>
+        <title>Nick Dev</title>
+      </Head>
       {/* navbar goes here */}
       <nav className="bg-gray-400">
-        <div className="max-w-6xl mx-auto">
+        <div className="max-w-6xl mx-auto px-4">
           <div className="flex justify-between">
             <div className="flex space-x-2">
               {/* logo  */}
@@ -35,7 +39,7 @@ export default function Home() {
               </div>
 
               {/* primary nav  */}
-              <div className="flex items-center space-x-1">
+              <div className="hidden md:flex items-center space-x-1">
                 <a
                   href="#feature"
                   className="py-5 px-3 text-gray-700 hover:text-gray-900"
@@ -52,8 +56,11 @@ export default function Home() {
             </div>
 
             {/* secondary nav  */}
-            <div className="flex items-center space-x-1">
-              <a href="#login" className="py-5 px-3 text-gray-700 hover:text-gray-900">
+            <div className="hidden md:flex items-center space-x-1">
+              <a
+                href="#login"
+                className="py-5 px-3 text-gray-700 hover:text-gray-900"
+              >
                 Login
               </a>
               <a
@@ -63,9 +70,48 @@ export default function Home() {
                 Signup
               </a>
             </div>
+
+            {/* mobile logo goes here */}
+            <div className="md:hidden flex items-center">
+              <button
+                className="mobile-menu-button"
+                onClick={() => setMenuButton(!menuButton)}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+              </button>
+            </div>
           </div>
         </div>
         {/* mobile nav  */}
+        {menuButton && (
+          <div className="md:hidden mobile-menu">
+            <a
+              href="#feature"
+              className="block py-2 px-4 text-sm hover:bg-gray-200"
+            >
+              Feature
+            </a>
+            <a
+              href="#pricing"
+              className="block py-2 px-4 text-sm hover:bg-gray-200"
+            >
+              Pricing
+            </a>
+          </div>
+        )}
       </nav>
       {/* content goes here */}
       <div className="py-32 text-center">
