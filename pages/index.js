@@ -1,5 +1,6 @@
 import Head from "next/head";
 import { useState } from "react";
+import Link from "next/link";
 export default function Home() {
   const [menuButton, setMenuButton] = useState(false);
   return (
@@ -41,12 +42,11 @@ export default function Home() {
 
                 {/* primary nav  */}
                 <div className="hidden md:flex items-center space-x-1">
-                  <a
-                    href="#feature"
-                    className="py-5 px-3 text-gray-700 hover:text-gray-900"
-                  >
-                    Features
-                  </a>
+                  <Link href="/sidebar">
+                    <a className="py-5 px-3 text-gray-700 hover:text-gray-900">
+                      Sidebar
+                    </a>
+                  </Link>
                   <a
                     href="#pricing"
                     className="py-5 px-3 text-gray-700 hover:text-gray-900"
@@ -99,12 +99,13 @@ export default function Home() {
           {/* mobile nav  */}
           {menuButton && (
             <div className="md:hidden mobile-menu">
-              <a
-                href="#feature"
-                className="block py-2 px-4 text-sm hover:bg-gray-200"
-              >
-                Feature
-              </a>
+              <Link href="/sidebar">
+                <a
+                  className="block py-2 px-4 text-sm hover:bg-gray-200"
+                >
+                  Sidebar
+                </a>
+              </Link>
               <a
                 href="#pricing"
                 className="block py-2 px-4 text-sm hover:bg-gray-200"
